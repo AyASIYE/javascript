@@ -1,3 +1,3 @@
 # javascript
-Hello, I will add my javascript projects here. 
+Hello, I add javascript fundementals projects here. 
 All the best.
