@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn the Horoscope</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" type="image/png" href="img/logo2.png">
+    <script src="./js/HoroscopeFunctions.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-box">
+            <img src="img/logo2.png" alt="Logo" class="logo">
+        </div>
+        <div class="text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary-main">HOROSCOPES</span>
+                <span class="heading-primary-sub">EVERYBODY ASKS YOUR SIGN?</span>
+            </h1>
+            <input name="birthDay" id="birthDay" type="number" placeholder="Enter the day" required> </input>
+            <input name="birthMonth" id="birthMonth" type="number" placeholder="Enter the month" required> </input>
+            <br>
+            <br>
+            <div class="result" id="result">
+            </div>
+            <br>
+            <a href="#" onclick="findHoroscope()" class="btn btn-white">Click to learn</a>
+        </div>
+    </header>
+
+</body>
+
+</html>
