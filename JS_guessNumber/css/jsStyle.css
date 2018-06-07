@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgb(#777);
+    font-size: 16px;
+    padding: 30px;
+
+}
+.header {
+    height: 90vh;
+    background-image: linear-gradient(
+        to right bottom,
+         #0a97e993 ,
+         #0d97e78a), 
+         url(../img/math2.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  
+}
+
+.logo-box {
+    position: absolute;
+    top: 40 px;
+    left: 40 px;
+
+}
+ .logo{
+    height: 50px;
+ }
+ .text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+ }
+ 
+
+ .heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+ }
+
+ .heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 30px;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;    
+ }
+ .heading-primary-sub {
+    display: block;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 10px;
+    animation: moveInRight 1.3s ease-out;
+  }
+ .inputs {
+    display: inline;
+    font-size: 17px;
+    font-weight: 400;
+    animation: moveInRight 1.3s ease-out;
+ }
+
+ @keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80% {
+        transform: translateX(5px);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+ }
+
+ @keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80% {
+        transform: translateX(-10px);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+    
+ }
+ @keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+ 
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+
+    }
+    
+ }
+ .btn:link,
+ .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+
+ }
+.btn:hover {
+    transform: translateY(3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 11px rgba(0,0,0,.2);
+
+}
+ .btn-white {
+     background-color: #fff;
+     color: #777;
+ }
+ .btn-animated {
+     animation: moveInBottom .5s ease-out .75s;
+     animation-fill-mode: backwards;
+ }
