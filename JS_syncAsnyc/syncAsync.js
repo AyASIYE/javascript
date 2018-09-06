@@ -3,9 +3,11 @@
 function first() {
     console.log("First one");
 }
+
 function second() {
     console.log("Second one");
 }
+
 function third() {
     console.log("Third one");
 }
@@ -18,14 +20,17 @@ function third() {
 // ASYNCHRONOUS
 // JavaScript is a Async language
 
+/*
 function first() {
-    setTimeout(function(){    // setTimeout set the time to wait 
+    setTimeout(function () { // setTimeout set the time to wait 
         console.log("First one");
-    }, 1000)  //  wait 1 second
+    }, 1000) //  wait 1 second
 }
+
 function second() {
     console.log("Second one");
 }
+
 function third() {
     console.log("Third one");
 }
@@ -34,18 +39,24 @@ first();
 second();
 third();
 
+*/
+
 // JavaScript handle this situation with callback functions
 
-function first(callback) {
-    setTimeout(function(){    // setTimeout set the time to wait 
-        console.log("First one");
-        callback(third); // second(third)
-    }, 2000)  //  wait 1 second
-}
-function second(callback) {
-    console.log("Second one");
-    callback();  // third()
-}
+// function first(callback) {
+//     setTimeout(function () { // setTimeout set the time to wait 
+//         console.log("First one");
+//         callback(third); // second(third)
+//     }, 2000) //  wait 1 second
+// }
+
+// function second(callback) {
+//     console.log("Second one");
+//     callback(); // third()
+// }
+
+
+/*
 function third() {
     console.log("Third one");
 }
@@ -69,8 +80,11 @@ async (2, function (result) {
     })
 });
 
+*/
+
 
 // Callback Hell / Pyramid of Doom
+/*
 function prepareTea() {
     setTimeout(function () {
         console.log("1. Find the vessel");
@@ -94,3 +108,53 @@ function prepareTea() {
 }
 
 prepareTea();
+*/
+
+
+// PROMISE CONSTRUCTOR
+
+// const myFirstPromise = new Promise((resolve, reject) => {});
+
+// let promiseToCleanTheRoom = new Promise(function (resolve, reject) {
+//     //clean the room
+
+//     let isClean = false;
+//     if (isClean) {
+//         resolve("clean");
+//     } else {
+//         reject("not clean");
+//     }
+// })
+
+// promiseToCleanTheRoom.then(function (fromResolve) {  // then() tracks resolve
+//     console.log("the room is " + fromResolve)
+// }).catch(function (fromReject) {   // catch() tracks reject
+//     console.log("The room is " + fromReject);
+// })
+
+// Now we have dependencies
+let cleanRoom = function() {
+    return new Promise(function(resolve, reject){
+        resolve("Cleaned the room ");
+    })
+}
+
+let removeGarbage = function(msg){
+    return new Promise(function(resolve, rejetct){
+        resolve(msg + " Removed garbage");
+    })
+}
+
+let winIceCream = function(msg) {
+    return new Promise(function(resolve, reject) {
+        resolve(msg + " Won icecream");
+    })
+}
+
+cleanRoom().then(function(result){
+    return removeGarbage(result);
+}).then(function(result) {
+    return winIceCream(result);
+}).then(function(result) {
+    console.log(" Finished " + result);
+})
