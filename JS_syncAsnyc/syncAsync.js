@@ -20,7 +20,7 @@ function third() {
 // ASYNCHRONOUS
 // JavaScript is a Async language
 
-/*
+
 function first() {
     setTimeout(function () { // setTimeout set the time to wait 
         console.log("First one");
@@ -39,24 +39,24 @@ first();
 second();
 third();
 
-*/
+
 
 // JavaScript handle this situation with callback functions
 
-// function first(callback) {
-//     setTimeout(function () { // setTimeout set the time to wait 
-//         console.log("First one");
-//         callback(third); // second(third)
-//     }, 2000) //  wait 1 second
-// }
+function first(callback) {
+    setTimeout(function () { // setTimeout set the time to wait 
+        console.log("First one");
+        callback(third); // second(third)
+    }, 2000) //  wait 1 second
+}
 
-// function second(callback) {
-//     console.log("Second one");
-//     callback(); // third()
-// }
+function second(callback) {
+    console.log("Second one");
+    callback(); // third()
+}
 
 
-/*
+
 function third() {
     console.log("Third one");
 }
@@ -80,11 +80,10 @@ async (2, function (result) {
     })
 });
 
-*/
 
 
 // Callback Hell / Pyramid of Doom
-/*
+
 function prepareTea() {
     setTimeout(function () {
         console.log("1. Find the vessel");
@@ -108,53 +107,189 @@ function prepareTea() {
 }
 
 prepareTea();
-*/
+
 
 
 // PROMISE CONSTRUCTOR
 
-// const myFirstPromise = new Promise((resolve, reject) => {});
+const myFirstPromise = new Promise((resolve, reject) => {});
 
-// let promiseToCleanTheRoom = new Promise(function (resolve, reject) {
-//     //clean the room
+let promiseToCleanTheRoom = new Promise(function (resolve, reject) {
+    //clean the room
 
-//     let isClean = false;
-//     if (isClean) {
-//         resolve("clean");
-//     } else {
-//         reject("not clean");
-//     }
-// })
+    let isClean = false;
+    if (isClean) {
+        resolve("clean");
+    } else {
+        reject("not clean");
+    }
+})
 
-// promiseToCleanTheRoom.then(function (fromResolve) {  // then() tracks resolve
-//     console.log("the room is " + fromResolve)
-// }).catch(function (fromReject) {   // catch() tracks reject
-//     console.log("The room is " + fromReject);
-// })
+promiseToCleanTheRoom.then(function (fromResolve) {  // then() tracks resolve
+    console.log("the room is " + fromResolve)
+}).catch(function (fromReject) {   // catch() tracks reject
+    console.log("The room is " + fromReject);
+})
 
 // Now we have dependencies
-let cleanRoom = function() {
-    return new Promise(function(resolve, reject){
+let cleanRoom = function () {
+    return new Promise(function (resolve, reject) {
         resolve("Cleaned the room ");
     })
 }
 
-let removeGarbage = function(msg){
-    return new Promise(function(resolve, rejetct){
+let removeGarbage = function (msg) {
+    return new Promise(function (resolve, rejetct) {
         resolve(msg + " Removed garbage");
     })
 }
 
-let winIceCream = function(msg) {
-    return new Promise(function(resolve, reject) {
+let winIceCream = function (msg) {
+    return new Promise(function (resolve, reject) {
         resolve(msg + " Won icecream");
     })
 }
 
-cleanRoom().then(function(result){
+cleanRoom().then(function (result) {
     return removeGarbage(result);
-}).then(function(result) {
+}).then(function (result) {
     return winIceCream(result);
-}).then(function(result) {
+}).then(function (result) {
     console.log(" Finished " + result);
+});
+
+/* *************************************************** */
+
+const async = () => {
+    return new Promise((resolve, reject) => {
+        resolve("Everything is good");
+    })
+}
+
+async ()
+    .then((data) => {
+        console.log(data);
+        return 1;
+    })
+    .then((data) => {
+        console.log(data);
+        return 2;
+    })
+    .then((data) => {
+        console.log(data);
+    })
+
+//////////////////////////////////////////
+const async = () => {
+    return new Promise((resolve, reject) => {
+        reject("Everything is good");
+    })
+}
+
+async ()
+    .catch((data) => {
+        console.log(data);
+        return 1;
+    })
+    .catch((data) => {
+        console.log(data);
+        return 2;
+    })
+    .catch((data) => {
+        console.log(data);
+    })
+
+////////////////////////////////////////////
+
+const async = (number) => {
+    return new Promise((resolve, reject) => {
+        if (number == 4) {
+            resolve("Everything is good");
+
+        } else {
+            reject("Everything is bad")
+        }
+    })
+};
+
+async (5)
+    .then((data) => {
+        console.log(data);
+        return 1;
+    })
+    .then((data) => {
+        console.log(data);
+        return 2;
+    })
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((data) => {
+        console.log(data);
+    });
+
+// ASYNC / AWAIT
+
+/* 
+Async functions can make use of await expression. This will pause the async function and wait for the Promise to resolve
+prior moving on.
+*/
+
+function doubleAfter2Seconds(x) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(x * 2);
+        }, 2000)
+
+    })
+}
+
+doubleAfter2Seconds(10).then((r) => {
+    console.log(r);
 })
+
+/******************************** */
+
+let sum = doubleAfter2Seconds(10) + doubleAfter2Seconds(20) + doubleAfter2Seconds(30);
+console.log(sum); // result is 3 Arrays 
+
+
+// Promise chain
+function addPromise(x) {
+    return new Promise(resolve => {
+        doubleAfter2Seconds(10).then((a) => {
+            doubleAfter2Seconds(20).then((b) => {
+                doubleAfter2Seconds(30).then((c) => {
+                    resolve(x + a + b + c);
+
+                })
+            })
+        })
+    })
+}
+
+addPromise(10).then((sum) => {
+    console.log(sum);
+})
+
+function doubleAfter2Seconds(x) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(x * 2);
+        }, 2000)
+
+    })
+}
+
+// async function returns a promise
+async function addAsync(x) {
+    const a = await doubleAfter2Seconds(10);
+    const b = await doubleAfter2Seconds(20);
+    const c = await doubleAfter2Seconds(30);
+    return x + a + b + c;
+}
+
+addAsync(10).then((sum) => {
+    console.log(sum);
+})
+
