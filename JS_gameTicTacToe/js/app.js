@@ -67,6 +67,9 @@ function checkIfDraw() {
 }
 
 function resetGame() {
+    if (gameIsOver) {
+        resetGame();
+    }
 
 }
 
