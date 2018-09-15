@@ -16,6 +16,8 @@ main {
     background-color: beige;
     float: left;
     transition: all 1s;
+    font-family: verdana;
+    font-size: 70px;
 }
 
 #game-area span:hover {
