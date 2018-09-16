@@ -86,11 +86,22 @@ function parkReport(park) {
     console.log(`Average age of ${park.length} parks is ${averageAge} years`);
 
     // Parks which have more than 1000 trees
-
+    let index = park.map(element => element.numberTrees).findIndex(element => element >= 1000);
+    // console.log(index);
+    // console.log(`${park[index].name} has more than 1000 trees.`)
 }
-
+ 
 function streetReport(street) {
 
+    console.log("************ STREET REPORTS ***************");
+
+    // Total and average length of the streets
+
+    let [totalLength, averageLength] = calculation(street.map(element => element.length));
+    console.log(`${street.length} streets have a total length of ${totalLength} km and average is ${averageLength} km`)
+
+    // Size classification
+    street.forEach(element => element.streetClassification());
 }
 
 parkReport(Parks);
