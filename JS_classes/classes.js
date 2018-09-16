@@ -28,7 +28,7 @@ class Park extends SuperClass {
     }
 
     treeDensity() {
-        let density = this.numberTress / this.parkArea;
+        let density = this.numberTrees / this.parkArea;
         console.log(`${this.name} Park's tree density is ${density}/km2`)
     }
 }
