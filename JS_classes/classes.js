@@ -21,10 +21,10 @@ class SuperClass {
 
 // Parks will be a subclass which will inherit name and buildyear by super key from superlcass
 class Park extends SuperClass {
-    constructor(name, buildYear, numberTrees, parkArea) {
+    constructor(name, buildYear, parkArea, numberTrees) {
         super(name, buildYear);
-        this.numberTress = numberTrees;
         this.parkArea = parkArea;
+        this.numberTrees = numberTrees;
     }
 
     treeDensity() {
@@ -38,7 +38,7 @@ class Street extends SuperClass {
     constructor(name, buildYear, streetLenght, streetSize = 3) {
         super(name, buildYear);
         this.streetLenght = streetLenght;
-        this.streeSize = streetSize;
+        this.streetSize = streetSize;
     }
 
     streetClassification() {
@@ -54,10 +54,10 @@ class Street extends SuperClass {
 }
 
 const Parks = [
-    new Park("Central", 1898, 456, 0.6),
-    new Park("Robinson", 1986, 166, 0.2),
-    new Park("Picnic", 1966, 1566, 1.2),
-    new Park("Hide", 1899, 2890, 1.7)
+    new Park("Central", 1898, 0.6, 456),
+    new Park("Robinson", 1986, 0.2, 166),
+    new Park("Picnic", 1966, 1.2, 1566),
+    new Park("Hide", 1899, 1.7, 2899)
 ];
 
 const Streets = [
@@ -74,7 +74,7 @@ function calculation(array) {
 }
 
 function parkReport(park) {
-    console.log("***********GENERAL PARK REPORT*************")
+    console.log(`*********** GENERAL PARK REPORT *************`)
 
     // treeDensity
     park.forEach(element => element.treeDensity());
@@ -88,20 +88,20 @@ function parkReport(park) {
     // Parks which have more than 1000 trees
     let index = park.map(element => element.numberTrees).findIndex(element => element >= 1000);
     // console.log(index);
-    // console.log(`${park[index].name} has more than 1000 trees.`)
+    console.log(`${park[index].name} has more than 1000 trees.`)
 }
  
-function streetReport(street) {
+function streetReport(streets) {
 
-    console.log("************ STREET REPORTS ***************");
+    console.log(`************ STREET REPORTS ***************`);
 
     // Total and average length of the streets
 
-    let [totalLength, averageLength] = calculation(street.map(element => element.length));
-    console.log(`${street.length} streets have a total length of ${totalLength} km and average is ${averageLength} km`)
+    let [totalLength, averageLength] = calculation(streets.map(element => element.length));
+    // console.log(`${streets.length} streets have a total length of ${totalLength} km and average is ${averageLength} km`)
 
     // Size classification
-    street.forEach(element => element.streetClassification());
+    streets.forEach(element => element.streetClassification());
 }
 
 parkReport(Parks);
